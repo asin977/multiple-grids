@@ -30,7 +30,7 @@ function createGridPanel(gridId) {
             <label>Rows: <input type="number" class="rows" min="1"></label>
             <label>Columns: <input type="number" class="cols" min="1"></label>
             <label>X: <input type="number" class="inputX" min="0" disabled></label>
-            <label>Y: <input type="number" class="inputY" min="0" disabled></label>
+            <label>Y: <input type="number" class="inputY" min="0" disabled></label><br><br>
             <div class="buttons">
                 <button class="generate">Generate</button>
                 <button class="mark" disabled>Mark</button>
@@ -151,3 +151,5 @@ function main() {
 }
 
 main();
+
+
