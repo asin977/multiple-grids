@@ -29,8 +29,8 @@ function createGridPanel(gridId) {
         <div class="controls">
             <label>Rows: <input type="number" class="rows" min="1"></label>
             <label>Columns: <input type="number" class="cols" min="1"></label>
-            <label>X: <input type="number" class="inputX" min="0" disabled></label>
-            <label>Y: <input type="number" class="inputY" min="0" disabled></label><br><br>
+            <label>X: <input type="number" class="inputX" min="1" disabled></label>
+            <label>Y: <input type="number" class="inputY" min="1" disabled></label><br><br>
             <div class="buttons">
                 <button class="generate">Generate</button>
                 <button class="mark" disabled>Mark</button>
@@ -87,8 +87,8 @@ function createGridPanel(gridId) {
         selectors.inputX.disabled = false;
         selectors.inputY.disabled = false;
 
-        selectors.inputX.setAttribute('max', rowCount - 1);
-        selectors.inputY.setAttribute('max', colCount - 1);
+        selectors.inputX.setAttribute('max', rowCount);
+        selectors.inputY.setAttribute('max', colCount);
 
         selectors.markBtn.disabled = false;
         selectors.clearBtn.disabled = false;
@@ -100,12 +100,12 @@ function createGridPanel(gridId) {
         const x = parseInt(selectors.inputX.value);
         const y = parseInt(selectors.inputY.value);
 
-        if (isNaN(x) || isNaN(y) || x < 0 || y < 0 || x >= rowCount || y >= colCount) {
-            alert(`Enter valid X-(0-${rowCount - 1}) & Y-(0-${colCount - 1})`);
+        if (isNaN(x) || isNaN(y) || x < 1 || y < 1 || x > rowCount || y > colCount) {
+            alert(`Enter valid X-(1-${rowCount}) & Y-(1-${colCount})`);
             return;
         }
 
-        const index = (rowCount - x ) * colCount + (y - 1);
+        const index = (rowCount - x) * colCount + (y - 1);
 
         selectors.grid.querySelectorAll('.cell').forEach(cell => cell.classList.remove('marked'));
         selectors.grid.children[index]?.classList.add('marked');
@@ -151,5 +151,3 @@ function main() {
 }
 
 main();
-
-
